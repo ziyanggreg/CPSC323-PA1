@@ -11,6 +11,7 @@ OPERATOR    [=|<|>|-|+][=]*
 INTEGER     [0-9]*
 REAL        [0-9]*[.][0-9]*
 PUNCTUATION [;]
+
 %%
 /* RULES SECTION*/
 {KEYWORD}             {printf("keyword \t '%s' \n", yytext);}
@@ -21,12 +22,10 @@ PUNCTUATION [;]
 {REAL}                {printf("real \t\t '%s' \n", yytext);}
 {PUNCTUATION}         {printf("punctuation \t '%s' \n", yytext);}
 
-
 [ \t\n]+              //Leave out whitespaces, tabs, and newlines
 [<|>][<|>]            //Leave out >> or <<
 [//][a-zA-Z0-9_! ]*   //Leave out comments
 ["][a-zA-Z0-9_! ]*    //Leave out string literals
-
 %%
 
 /* USER ROUTINES SECTION */
