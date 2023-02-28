@@ -1,9 +1,9 @@
-/* DECLARATION SECTION*/
+/* DECLARATION SECTION */
 %{
 
 %}
 
-/* DEFINITIONS SECTION*/
+/* DEFINITIONS SECTION */
 KEYWORD     [a-zA-z]{3}[a-zA-z]*
 SEPARATOR   [(|)|{|}]
 IDENTIFIER  [a-z]
@@ -12,8 +12,8 @@ INTEGER     [0-9]*
 REAL        [0-9]*[.][0-9]*
 PUNCTUATION [;]
 
+/*** RULES SECTION ***/
 %%
-/* RULES SECTION*/
 {KEYWORD}             {printf("keyword \t '%s' \n", yytext);}
 {SEPARATOR}           {printf("separator \t '%s' \n", yytext);}
 {IDENTIFIER}          {printf("identifier \t '%s' \n", yytext);}
