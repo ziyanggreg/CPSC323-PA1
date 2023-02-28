@@ -1,5 +1,5 @@
 Author: Greg Zhang
-Author Email: ziyanggreg@gmail.com
+Author Email: ziyangz@csu.fullerton.edu
 
 CPSC-323 Programming Assignment 1
 
