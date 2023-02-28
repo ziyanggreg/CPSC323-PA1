@@ -1,9 +1,9 @@
-/* Definitions */
+/* DECLARATION SECTION*/
 %{
 
 %}
 
-/* Rules (Regular Expressions) */
+/* DEFINITIONS SECTION*/
 KEYWORD     [a-zA-z]{3}[a-zA-z]*
 SEPARATOR   [(|)|{|}]
 IDENTIFIER  [a-z]
@@ -12,6 +12,7 @@ INTEGER     [0-9]*
 REAL        [0-9]*[.][0-9]*
 PUNCTUATION [;]
 %%
+/* RULES SECTION*/
 {KEYWORD}             {printf("keyword \t '%s' \n", yytext);}
 {SEPARATOR}           {printf("separator \t '%s' \n", yytext);}
 {IDENTIFIER}          {printf("identifier \t '%s' \n", yytext);}
@@ -28,7 +29,7 @@ PUNCTUATION [;]
 
 %%
 
-/* User Routines */
+/* USER ROUTINES SECTION */
 int yywrap(){
   return 1;
 } // Wraps the rule section
