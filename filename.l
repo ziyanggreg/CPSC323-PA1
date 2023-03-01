@@ -1,3 +1,9 @@
+/*AUTHOR: Greg Zhang */
+/*AUTHOR EMAIL: ziyangz@csu.fullerton.edu */
+/*** Description: CPSC-323 Programming Assignment 1.
+      This is a flex program that will take input from the "input_sourcecode.txt" file and sort
+      lexemes to their corresponding token categories. The result is displayed in a table. ***/
+
 /*** DECLARATION SECTION ***/
 %{
 
@@ -7,12 +13,12 @@
 %option noyywrap
 
 KEYWORD     [a-zA-z]{3}[a-zA-z]*
-SEPARATOR   [(|)|{|}]
-IDENTIFIER  [a-z]
-OPERATOR    [=|<|>|-|+][=]*
-INTEGER     [0-9]*
+SEPARATOR   [(){}|]
+IDENTIFIER  [a-zA-Z]
+OPERATOR    (?:=|<|>|[-+])=*
+INTEGER     [0-9]+
 REAL        [0-9]*[.][0-9]*
-PUNCTUATION [;]
+PUNCTUATION [;,.]
 
 /*** RULES SECTION ***/
 %option nounput nodefault
@@ -88,7 +94,7 @@ PUNCTUATION [;]
 [ \t\n]+              //Leave out whitespaces, tabs, and newlines
 [<|>][<|>]            //Leave out >> or <<
 [//][a-zA-Z0-9_! ]*   //Leave out comments
-["][a-zA-Z0-9_! ]*    //Leave out string literals
+\"(\\.|[^"\\])*\"    //Leave out string literals
 .                     //Leave out unrecognized characters
 
 %%
