@@ -1,5 +1,5 @@
 TOKENS 	 	 LEXEMES 
----------------------------
+----------------------------------------------------------------
 keyword 	 'int main for int while cout return' 
 separator 	 '( ) { ( ) { ( ) { } } }' 
 identifier 	 'i i i i i' 
