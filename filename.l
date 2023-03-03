@@ -11,6 +11,7 @@
 
 %}
 
+INVALID     [0][0-9]+
 KEYWORD     [a-zA-z]{3}[a-zA-z]*
 SEPARATOR   [(){}|]
 IDENTIFIER  [a-zA-Z]
@@ -30,10 +31,21 @@ PUNCTUATION [;,.]
     char integer_lexeme[100];
     char real_lexeme[100];
     char punc_lexeme[100];
+    char invalid[100];
+
 
 %}
 
 %%
+{INVALID}	       {
+                        if(strlen(invalid) == 0) {
+                          strcpy(invalid, yytext);
+                        } else {
+                            strcat(invalid, " ");
+                            strcat(invalid, yytext);
+                          }
+                      }
+
 {KEYWORD}             {
                         if(strlen(keyword_lexeme) == 0) {
                           strcpy(keyword_lexeme, yytext);
@@ -108,6 +120,9 @@ int main(){
   yylex();
 
   //Display Results
+  if(strcmp(invalid, "") != 0) {
+      printf("INVALID \t '%s' \n", invalid);
+  }
   if(strcmp(keyword_lexeme, "") != 0) {
       printf("keyword \t '%s' \n", keyword_lexeme);
   }
